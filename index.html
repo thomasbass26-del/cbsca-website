@@ -11,26 +11,27 @@
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%23003087'/><text x='50' y='68' font-size='52' font-family='Georgia' fill='%23C9A84C' text-anchor='middle' font-weight='bold'>SC</text></svg>">
 <title>Coldwell Banker Sea Coast Advantage | Myrtle Beach & Grand Strand Real Estate</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300&family=Jost:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400;1,8..60,600&family=Libre+Franklin:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
 /* ══════════════════════════════════════
    VARIABLES & RESET
 ══════════════════════════════════════ */
 :root {
-  --navy: #003087;
-  --blue: #0057A8;
-  --gold: #C9A84C;
-  --gold-light: #E8C87A;
+  --navy: #001E60;
+  --blue: #1A3D7C;
+  --gold: #C1A163;
+  --gold-light: #D8C294;
   --white: #FFFFFF;
-  --off-white: #F8F6F1;
-  --cream: #EDE8DF;
-  --dark: #1A1A2E;
-  --gray: #6B7280;
-  --fd: 'Playfair Display', Georgia, serif;
-  --fb: 'Cormorant Garamond', Georgia, serif;
-  --fu: 'Jost', sans-serif;
-  --shadow: 0 4px 24px rgba(0,48,135,0.09);
-  --shadow-lg: 0 12px 48px rgba(0,48,135,0.14);
+  --off-white: #FBFAF7;
+  --cream: #F2EFE8;
+  --dark: #1A2340;
+  --gray: #5B6478;
+  --fd: 'Source Serif 4', Georgia, serif;
+  --fb: 'Source Serif 4', Georgia, serif;
+  --fu: 'Libre Franklin', sans-serif;
+  --fm: 'JetBrains Mono', monospace;
+  --shadow: 0 4px 24px rgba(0,30,96,0.09);
+  --shadow-lg: 0 12px 48px rgba(0,30,96,0.14);
   --ease: all 0.32s cubic-bezier(0.4,0,0.2,1);
   --nav-h: 62px;
 }
@@ -44,7 +45,7 @@ img{max-width:100%;display:block}
    UTILITY
 ══════════════════════════════════════ */
 .container{max-width:1340px;margin:0 auto;padding:0 16px}
-.lbl{font-family:var(--fu);font-size:10px;font-weight:500;letter-spacing:3px;text-transform:uppercase;color:var(--gold);display:block}
+.lbl{font-family:var(--fm);font-size:9px;font-weight:500;letter-spacing:3px;text-transform:uppercase;color:var(--gold);display:block}
 .h2{font-family:var(--fd);font-size:clamp(1.7rem,4vw,3rem);font-weight:600;color:var(--navy);line-height:1.2}
 .h2.light{color:var(--white)}
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;font-family:var(--fu);font-size:11px;font-weight:500;letter-spacing:2px;text-transform:uppercase;padding:14px 28px;border:none;cursor:pointer;transition:var(--ease);white-space:nowrap}
@@ -68,12 +69,12 @@ img{max-width:100%;display:block}
 /* ══════════════════════════════════════
    NAVBAR
 ══════════════════════════════════════ */
-.navbar{position:sticky;top:0;z-index:900;background:var(--white);border-bottom:1px solid rgba(0,48,135,0.08);box-shadow:var(--shadow);transition:var(--ease)}
+.navbar{position:sticky;top:0;z-index:900;background:var(--white);border-bottom:1px solid rgba(0,30,96,0.08);box-shadow:var(--shadow);transition:var(--ease)}
 .navbar.scrolled{backdrop-filter:blur(14px);background:rgba(255,255,255,0.96)}
 .nav-inner{display:flex;align-items:center;justify-content:space-between;height:var(--nav-h);gap:12px}
 .nav-logo{display:flex;flex-direction:column;gap:1px;cursor:pointer;min-width:0;flex-shrink:1}
 .nav-logo .lt{font-family:var(--fd);font-size:clamp(13px,3.5vw,17px);font-weight:700;color:var(--navy);line-height:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.nav-logo .ls{font-family:var(--fu);font-size:clamp(6px,1.8vw,8px);font-weight:400;letter-spacing:2px;text-transform:uppercase;color:var(--gold);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.nav-logo .ls{font-family:var(--fm);font-size:clamp(6px,1.8vw,8px);font-weight:400;letter-spacing:2px;text-transform:uppercase;color:var(--gold);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 
 /* Desktop links — hidden on mobile by default */
 .nav-links{display:none;align-items:center;gap:2px;list-style:none}
@@ -81,7 +82,7 @@ img{max-width:100%;display:block}
 .nav-links>li>a{display:block;font-family:var(--fu);font-size:11px;font-weight:500;letter-spacing:1.5px;text-transform:uppercase;color:var(--dark);padding:8px 14px;cursor:pointer;transition:var(--ease)}
 .nav-links>li>a:hover,.nav-links>li>a.active{color:var(--blue)}
 .nav-links>li>a.active{border-bottom:2px solid var(--gold)}
-.dropdown{position:absolute;top:100%;left:50%;transform:translateX(-50%);background:var(--white);border:1px solid rgba(0,48,135,0.09);box-shadow:var(--shadow-lg);min-width:210px;padding:10px 0;opacity:0;pointer-events:none;transition:opacity 0.18s ease;z-index:999}
+.dropdown{position:absolute;top:100%;left:50%;transform:translateX(-50%);background:var(--white);border:1px solid rgba(0,30,96,0.09);box-shadow:var(--shadow-lg);min-width:210px;padding:10px 0;opacity:0;pointer-events:none;transition:opacity 0.18s ease;z-index:999}
 .dropdown::before{content:'';position:absolute;top:-12px;left:0;right:0;height:12px;background:transparent}
 .nav-links>li:hover .dropdown{opacity:1;pointer-events:all}
 .dropdown a{display:block;font-family:var(--fu);font-size:11px;font-weight:400;color:var(--dark);padding:9px 22px;border-left:2px solid transparent;transition:var(--ease)}
@@ -295,7 +296,7 @@ img{max-width:100%;display:block}
 /* ══════════════════════════════════════
    LIFESTYLE PAGE
 ══════════════════════════════════════ */
-.ls-hero{background:linear-gradient(135deg,#001855 0%,#003087 55%,#0057A8 100%);padding:56px 16px;position:relative;overflow:hidden}
+.ls-hero{background:linear-gradient(135deg,#001855 0%,#001E60 55%,#1A3D7C 100%);padding:56px 16px;position:relative;overflow:hidden}
 .ls-hero::before{content:'';position:absolute;top:0;right:0;width:50%;height:100%;background-image:url('images/plantation-lakes-home-1.jpg');background-size:cover;background-position:center;clip-path:polygon(20% 0%,100% 0%,100% 100%,0% 100%);opacity:.3}
 .ls-hero-body{position:relative;z-index:1;max-width:560px}
 .ls-hero-body .lbl{margin-bottom:12px}
@@ -329,8 +330,8 @@ img{max-width:100%;display:block}
 .tier-bg{height:360px;background-size:cover;background-position:center;transition:transform .65s ease}
 .tier:hover .tier-bg{transform:scale(1.05)}
 .tier-ov{position:absolute;inset:0;transition:var(--ease)}
-.tier-entry .tier-ov{background:linear-gradient(to top,rgba(0,48,135,.88) 0%,rgba(0,48,135,.22) 65%)}
-.tier-mid .tier-ov{background:linear-gradient(to top,rgba(0,48,135,.9) 0%,rgba(201,168,76,.18) 65%)}
+.tier-entry .tier-ov{background:linear-gradient(to top,rgba(0,30,96,.88) 0%,rgba(0,30,96,.22) 65%)}
+.tier-mid .tier-ov{background:linear-gradient(to top,rgba(0,30,96,.9) 0%,rgba(201,168,76,.18) 65%)}
 .tier-ultra .tier-ov{background:linear-gradient(to top,rgba(10,8,30,.95) 0%,rgba(10,8,30,.42) 65%)}
 .tier-body{position:absolute;bottom:0;left:0;right:0;padding:32px 24px;z-index:2}
 .tier-lbl{font-family:var(--fu);font-size:9px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:var(--gold);display:block;margin-bottom:8px}
@@ -456,7 +457,7 @@ img{max-width:100%;display:block}
 /* ══════════════════════════════════════
    ABOUT PAGE
 ══════════════════════════════════════ */
-.about-hero{background:linear-gradient(135deg,#001855,#003087);padding:72px 16px 60px;position:relative;overflow:hidden}
+.about-hero{background:linear-gradient(135deg,#001855,#001E60);padding:72px 16px 60px;position:relative;overflow:hidden}
 .about-hero .lbl{margin-bottom:12px}
 .about-hero h1{font-family:var(--fd);font-size:clamp(2rem,6vw,4.5rem);font-weight:700;color:var(--white);line-height:1.1;max-width:680px}
 .about-hero h1 em{font-style:italic;color:var(--gold-light)}
