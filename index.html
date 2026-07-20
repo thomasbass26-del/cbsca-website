@@ -73,6 +73,9 @@ img{max-width:100%;display:block}
 .navbar.scrolled{backdrop-filter:blur(14px);background:rgba(255,255,255,0.96)}
 .nav-inner{display:flex;align-items:center;justify-content:space-between;height:var(--nav-h);gap:12px}
 .nav-logo{display:flex;flex-direction:column;gap:1px;cursor:pointer;min-width:0;flex-shrink:1}
+.brand-mark{display:block;background-color:var(--navy);-webkit-mask:url('images/cb-monogram.png') no-repeat left center/contain;mask:url('images/cb-monogram.png') no-repeat left center/contain}
+.nav-logo .brand-mark{width:118px;height:30px}
+.foot-brand .brand-mark{background-color:#FFFFFF;width:152px;height:40px;margin-bottom:6px}
 .nav-logo .lt{font-family:var(--fd);font-size:clamp(13px,3.5vw,17px);font-weight:700;color:var(--navy);line-height:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .nav-logo .ls{font-family:var(--fm);font-size:clamp(6px,1.8vw,8px);font-weight:400;letter-spacing:2px;text-transform:uppercase;color:var(--gold);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 
@@ -765,8 +768,8 @@ footer{background:#050F1F;color:rgba(255,255,255,.6);padding:64px 0 0}
 <nav class="navbar" id="mainNav">
   <div class="container">
     <div class="nav-inner">
-      <a class="nav-logo" onclick="showPage('home');return false" href="#">
-        <span class="lt">Sea Coast Advantage</span>
+      <a class="nav-logo" onclick="showPage('home');return false" href="#" aria-label="Coldwell Banker Sea Coast Advantage">
+        <span class="brand-mark" role="img" aria-label="Coldwell Banker Sea Coast Advantage"></span>
         <span class="ls">Coldwell Banker · Myrtle Beach & Grand Strand</span>
       </a>
       <!-- Desktop -->
@@ -1796,7 +1799,7 @@ footer{background:#050F1F;color:rgba(255,255,255,.6);padding:64px 0 0}
   <div class="container">
     <div class="foot-grid">
       <div class="foot-brand">
-        <span class="lt">Sea Coast Advantage</span>
+        <span class="brand-mark" role="img" aria-label="Coldwell Banker Sea Coast Advantage"></span>
         <span class="ls">Coldwell Banker · Myrtle Beach &amp; Grand Strand</span>
         <p id="footDescEl">Serving the Grand Strand and North Strand communities of South Carolina with integrity, expertise, and a genuine love for this coast.</p>
         <p style="margin-top:8px">Licensed in South Carolina · Equal Housing Opportunity</p>
