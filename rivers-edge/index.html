@@ -103,6 +103,25 @@ h2 em{font-style:italic;font-weight:400}
 .tri p{font-size:14.5px;font-weight:300;color:#3E4C5E}
 @media(max-width:860px){.trio{grid-template-columns:1fr}.tri{border-left:none;border-top:1px solid var(--fog)}.tri:first-child{border-top:none}}
 
+/* ---------- gallery ---------- */
+.gallery .head{text-align:center;max-width:640px;margin:0 auto 56px}
+.slider{position:relative;max-width:780px;margin:0 auto;aspect-ratio:4/3;overflow:hidden;background:var(--ink)}
+.slide{position:absolute;inset:0;opacity:0;transition:opacity .7s ease;pointer-events:none}
+.slide.active{opacity:1;pointer-events:auto}
+.slide img{width:100%;height:100%;object-fit:cover;display:block}
+.slide-cap{position:absolute;left:0;right:0;bottom:0;padding:44px 20px 15px;background:linear-gradient(0deg,rgba(9,27,51,.78),transparent);color:var(--white);font-size:10.5px;font-weight:500;letter-spacing:.24em;text-transform:uppercase}
+.slider-btn{position:absolute;top:50%;transform:translateY(-50%);z-index:5;width:44px;height:44px;display:flex;align-items:center;justify-content:center;background:rgba(9,27,51,.4);border:1px solid rgba(255,255,255,.45);color:var(--white);cursor:pointer;font-size:20px;line-height:1;transition:background .25s}
+.slider-btn:hover{background:rgba(9,27,51,.7)}
+.slider-btn:focus-visible{outline:2px solid var(--mist);outline-offset:2px}
+.slider-btn.prev{left:14px}.slider-btn.next{right:14px}
+.slider-meta{display:flex;justify-content:space-between;align-items:center;max-width:780px;margin:16px auto 0;padding:0 2px}
+.slider-count{font-size:11px;letter-spacing:.2em;color:#7C8896}
+.dots{display:flex;gap:9px}
+.dot{width:7px;height:7px;border-radius:50%;background:var(--fog);border:none;padding:0;cursor:pointer;transition:background .25s}
+.dot.on{background:var(--slate)}
+.dot:focus-visible{outline:2px solid var(--mist);outline-offset:2px}
+@media(max-width:640px){.slider-btn{width:38px;height:38px}}
+
 /* ---------- location ---------- */
 .location-grid{display:grid;grid-template-columns:.95fr 1.05fr;gap:72px;align-items:start}
 .drive{list-style:none;margin-top:8px}
@@ -198,7 +217,7 @@ footer img{height:130px;width:auto;margin:0 auto 26px}
       <p>If you want river access and a quiet, established neighborhood away from the tourist bustle, Rivers Edge Plantation fits the bill.</p>
     </div>
     <div class="photo-frame">
-      <div class="photo"><span>Photo · Waccamaw River at Rivers Edge</span></div>
+      <img src="img/06-day-dock.webp" alt="The community day dock on the Waccamaw River at Rivers Edge Plantation" style="position:relative;z-index:1;width:100%;height:400px;object-fit:cover;display:block" loading="lazy">
     </div>
   </div>
 </section>
@@ -227,6 +246,35 @@ footer img{height:130px;width:auto;margin:0 auto 26px}
         <h3>Tree-lined, small-town feel</h3>
         <p>Gated entrances, quiet streets, and a peaceful, semi-rural setting — established homes and newer construction in a community that feels a world away from the tourist corridor.</p>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ GALLERY ============ -->
+<section class="section gallery" id="gallery">
+  <div class="wrap">
+    <div class="head">
+      <span class="eyebrow">Inside the Gates</span>
+      <h2>See Rivers Edge <em>for yourself</em></h2>
+      <div class="rule center"></div>
+    </div>
+    <div class="slider" id="slider" role="region" aria-roledescription="carousel" aria-label="Rivers Edge Plantation photo gallery">
+      <div class="slide active"><img src="img/01-amenity-center-aerial.webp" alt="Aerial view of the Rivers Edge amenity center, pool and clubhouse"><span class="slide-cap">The riverside amenity center from above</span></div>
+      <div class="slide"><img src="img/02-pool.webp" alt="Community pool and sun deck" loading="lazy"><span class="slide-cap">Resort-style pool &amp; sun deck</span></div>
+      <div class="slide"><img src="img/03-pool-pavilion.webp" alt="Covered pavilion beside the community pool" loading="lazy"><span class="slide-cap">Covered pavilion at the pool</span></div>
+      <div class="slide"><img src="img/04-clubhouse.webp" alt="The Rivers Edge community clubhouse" loading="lazy"><span class="slide-cap">The community clubhouse</span></div>
+      <div class="slide"><img src="img/05-boat-launch.webp" alt="Private boat launch and elevated dock" loading="lazy"><span class="slide-cap">The private boat launch</span></div>
+      <div class="slide"><img src="img/06-day-dock.webp" alt="Day dock among cypress trees on the Waccamaw" loading="lazy"><span class="slide-cap">The day dock on the Waccamaw</span></div>
+      <div class="slide"><img src="img/07-waccamaw-channel.webp" alt="View down the blackwater channel from the dock" loading="lazy"><span class="slide-cap">Blackwater channel views</span></div>
+      <div class="slide"><img src="img/08-day-dock-rails.webp" alt="Walkway onto the community day dock" loading="lazy"><span class="slide-cap">Your gateway to the river</span></div>
+      <div class="slide"><img src="img/09-river-trail.webp" alt="Tree-lined path down to the boat launch" loading="lazy"><span class="slide-cap">The path down to the water</span></div>
+      <div class="slide"><img src="img/10-gated-entrance.webp" alt="Gated entrance to Rivers Edge Plantation" loading="lazy"><span class="slide-cap">Gated entrance off Highway 90</span></div>
+      <button class="slider-btn prev" aria-label="Previous photo">&#8249;</button>
+      <button class="slider-btn next" aria-label="Next photo">&#8250;</button>
+    </div>
+    <div class="slider-meta">
+      <span class="slider-count" id="sliderCount">01 / 10</span>
+      <div class="dots" id="sliderDots"></div>
     </div>
   </div>
 </section>
@@ -351,6 +399,43 @@ footer img{height:130px;width:auto;margin:0 auto 26px}
 </footer>
 
 <script>
+// Photo gallery slider
+(function(){
+  var slider = document.getElementById('slider');
+  if(!slider) return;
+  var slides = slider.querySelectorAll('.slide');
+  var count = document.getElementById('sliderCount');
+  var dotsWrap = document.getElementById('sliderDots');
+  var i = 0, timer = null, n = slides.length;
+  var pad = function(x){ return (x<9?'0':'')+(x+1); };
+  slides.forEach(function(_,k){
+    var d = document.createElement('button');
+    d.className = 'dot'+(k===0?' on':''); d.setAttribute('aria-label','Go to photo '+(k+1));
+    d.addEventListener('click', function(){ go(k); restart(); });
+    dotsWrap.appendChild(d);
+  });
+  var dots = dotsWrap.querySelectorAll('.dot');
+  function go(k){
+    slides[i].classList.remove('active'); dots[i].classList.remove('on');
+    i = (k+n)%n;
+    slides[i].classList.add('active'); dots[i].classList.add('on');
+    count.textContent = pad(i)+' / '+pad(n-1);
+  }
+  function restart(){ clearInterval(timer); timer = setInterval(function(){ go(i+1); }, 5000); }
+  slider.querySelector('.prev').addEventListener('click', function(){ go(i-1); restart(); });
+  slider.querySelector('.next').addEventListener('click', function(){ go(i+1); restart(); });
+  var tx = null;
+  slider.addEventListener('touchstart', function(e){ tx = e.touches[0].clientX; }, {passive:true});
+  slider.addEventListener('touchend', function(e){
+    if(tx===null) return;
+    var dx = e.changedTouches[0].clientX - tx; tx = null;
+    if(Math.abs(dx) > 40){ go(dx<0 ? i+1 : i-1); restart(); }
+  }, {passive:true});
+  slider.addEventListener('mouseenter', function(){ clearInterval(timer); });
+  slider.addEventListener('mouseleave', restart);
+  restart();
+})();
+
 // Floating CTA appears after the hero, hides at the form
 (function(){
   var cta = document.getElementById('floatCta');
