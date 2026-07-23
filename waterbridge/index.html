@@ -509,12 +509,21 @@ footer{background:var(--ink);color:rgba(255,255,255,.6);padding:64px 0 44px;text
   });
 })();
 
-document.getElementById('leadForm').addEventListener('submit', function(e){
+document.getElementById('leadForm').addEventListener('submit', async function(e){
   e.preventDefault();
-  // TODO: wire to Firebase Cloud Function / Real Geeks endpoint
-  // fetch('https://YOUR-CLOUD-FUNCTION-URL', { method:'POST', body: new FormData(this) })
-  alert('Thank you — the Fletcher Sales Team will reach out shortly.');
-  this.reset();
+  var form = this;
+  var btn = form.querySelector('button[type="submit"]');
+  var data = new URLSearchParams();
+  new FormData(form).forEach(function(v,k){ data.append(k,v); });
+  data.append('page', window.location.href);
+  btn.disabled = true; btn.textContent = 'Sending…';
+  try{
+    await fetch('https://hooks.zapier.com/hooks/catch/28341110/44kgpfx/', { method:'POST', mode:'no-cors', body:data });
+    form.innerHTML = '<h3>Thank you</h3><p style="font-size:14.5px;font-weight:300;color:#3E4C5E;line-height:1.7">Your request is on its way to the Fletcher Sales Team. Expect to hear from them shortly.</p>';
+  }catch(err){
+    btn.disabled = false; btn.textContent = 'Send My Request';
+    alert('Something went wrong — please try again, or reach the Fletcher Sales Team through Coldwell Banker Sea Coast Advantage.');
+  }
 });
 </script>
 
